@@ -1,11 +1,7 @@
-//'use strict';
+'use strict';
 
 jQuery(document).ready(function($){
      window.Todos = Ember.Application.create();
-
-     DS.RESTAdapter.configure("plurals", {
-      todos: "people"
-    });
 
     Todos.Store = DS.Store.extend({
         revision: 12,
@@ -14,11 +10,9 @@ jQuery(document).ready(function($){
         })
     });
 
-    
-
     Todos.Todo = DS.Model.extend({
-         title: DS.attr('string'),
-         isCompleted: DS.attr('boolean'),
+        title: DS.attr('string'),
+        isCompleted: DS.attr('boolean'),
 
         todoDidChange: function () {
             Ember.run.once(this, function () {
