@@ -28,8 +28,12 @@ db.create_all()
 restless_manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 
 
-def ember_formatter(results):
+def post_collection_formatter(results):
     return {'todos': results['objects']} if 'page' in results else results
+
+
+def post_singlular_formatter(results):
+    return {'todo': results}
 
 
 def pre_ember_formatter(results):
@@ -48,7 +52,9 @@ restless_manager.create_api(
     collection_name='todos',
     results_per_page=-1,
     postprocessors={
-        'GET_MANY': [ember_formatter]
+        'GET_MANY': [post_collection_formatter],
+        'POST': [post_singlular_formatter],
+        'PUT_SINGLE': [post_singlular_formatter]
     },
     preprocessors={
         'POST': [pre_ember_formatter],
