@@ -162,7 +162,7 @@ Todos.TodosRoute = Ember.Route.extend({
 /*
  * Templates are usually only useful if they have information to display and
  * so we have to make sure that the controller has the information it needs.
- * As we setup above, the route '/' will provide data for the controller.
+ * As we setup above, the index route, '/' will provide data for the controller.
  * It's important to remember that controllers are created if they don't
  * exist. So for `TodosIndexRoute` a TodosIndexController was created. So we
  * need provide this controller with some data. In this case, we make
@@ -192,7 +192,7 @@ Todos.TodosActiveRoute = Ember.Route.extend({
 });
 
 /*
- * This route '/completed' is just the inverse of the above.
+ * The route '/completed' is just the inverse of the above.
  */
 Todos.TodosCompletedRoute = Ember.Route.extend({
     setupController: function () {
@@ -299,7 +299,7 @@ Todos.TodosController = Ember.ArrayController.extend({
 });
 
 /*
- * Controller for the todo view. No suprises here.
+ * Controller for the todo view. No surprises here.
  */
 Todos.TodoController = Ember.ObjectController.extend({
     isEditing: false,
